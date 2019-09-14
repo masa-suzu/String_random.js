@@ -21,6 +21,10 @@ assert.throws(function () {
 	String.random('(aaa');
 });
 
+assert.ok(function (pattern, wanted) {
+	return String.random(pattern).indexOf(wanted) !== -1;
+}(/[1-2]{1000}/, '2'), 'Generated string includes no terminator.');
+
 var patterns = [
 	/^$/,
 	/^\$/, // no warnings
